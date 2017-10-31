@@ -41,7 +41,6 @@ class Filtering:
         cutoff: the cutoff frequency of the ideal filter
         returns a ideal low pass mask"""
 
-
         return 0
 
 

@@ -11,8 +11,9 @@ class DFT:
         takes as input:
         matrix: a 2d matrix
         returns a complex matrix representing fourier transform"""
+        print("--------FOURIER TRNASFORM----")
+        print(np.fft.fft2(matrix))
 
-        """Compute the discrete Fourier Transform of the 1D array x"""
         N = len(matrix)
 
         darray = [[0.0 for i in range(N)] for j in range(N)]
@@ -38,11 +39,26 @@ class DFT:
         matrix: a 2d matrix (DFT) usually complex
         takes as input:
         returns a complex matrix representing the inverse fourier transform"""
+        print("--------INVERSE---------")
+        print(np.fft.ifft2(matrix))
 
+        N = len(matrix)
+
+        darray = [[0.0 for i in range(N)] for j in range(N)]
+
+        for i in range(N):
+            for j in range(N):
+                sums = 0.0
+
+                for u in range(N):
+                    for v in range(N):
+                        val = matrix[u][v]
+                        e = cmath.exp(1j * (2.0 * cmath.pi) * ((float(u * i) / N) + (float(v * j) / N)))
+                        sums += (1/(N*N)) * val * e
+
+                darray[i][j] = sums
     
-
-
-        return matrix
+        return darray
 
 
     def discrete_cosine_tranform(self, matrix):
@@ -50,8 +66,6 @@ class DFT:
         takes as input:
         matrix: a 2d matrix
         returns a matrix representing discrete cosine transform"""
-
-
 
         return matrix
 
